@@ -10,14 +10,18 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook",
-    "prestorybook": "rnstl"
+    "prestorybook": "rnstl",
+    "build-react": "webpack --mode production",
+    "start-react": "webpack serve --config ./webpack.config.js --mode development"
   },
   "dependencies": {
     "react": "17.0.1",
     "react-native": "0.64.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
     "@storybook/addon-actions": "^5.3.21",
@@ -33,12 +37,16 @@
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "eslint": "^7.14.0",
+    "html-webpack-plugin": "^5.3.1",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
-    "react-dom": "^17.0.1",
+    "react-dom": "^17.0.2",
     "react-native-storybook-loader": "^2.0.2",
     "react-test-renderer": "17.0.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "webpack": "^5.31.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "resolutions": {
     "@types/react": "^17"
@@ -56,7 +64,10 @@
   },
   "config": {
     "react-native-storybook-loader": {
-      "searchDir": ["./components","./storybook"],
+      "searchDir": [
+        "./components",
+        "./storybook"
+      ],
       "pattern": "**/*.stories.{js,tsx}",
       "outputFile": "./storybook/storyLoader.js"
     }
