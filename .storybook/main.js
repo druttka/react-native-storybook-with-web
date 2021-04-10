@@ -1,10 +1,15 @@
+const custom = require('../webpack.config');
+
 module.exports = {
   "stories": [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)"
+    "../storybook/**/*.stories.@(js|jsx|ts|tsx)",
+    "../components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials"
-  ]
+  webpackFinal: (config) => {
+    return {
+      ...config,
+      resolve: { ...config.resolve, alias: { ...config.resolve.alias, ...custom.resolve.alias } },
+      module: { ...config.module, rules: custom.module.rules },
+    }
+  },
 }
