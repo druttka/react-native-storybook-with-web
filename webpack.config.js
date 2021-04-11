@@ -16,6 +16,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        exclude: /node_modules\/(?!()\/).*/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: ['@babel/plugin-proposal-class-properties'],
+            presets: [
+              '@babel/preset-typescript',
+              '@babel/preset-env',
+              '@babel/preset-react',
+            ],
+          },
+        },
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules\/(?!()\/).*/,
         use: {
